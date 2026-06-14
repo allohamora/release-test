@@ -3,7 +3,7 @@
 
 [changelog]
 postprocessors = [
-  { pattern = '<!-- \d+ -->', replace = "" },
+    { pattern = '<!-- \d+ -->', replace = "" },
 ]
 body = """
 {% if version %}\
@@ -11,28 +11,25 @@ body = """
 {% else %}\
     ## [Unreleased]
 {% endif %}\
-{% if previous %}\
-    {% if previous.commit_id and commit_id %}
-        [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ previous.commit_id }})...\
-            [{{ commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit_id }})
-    {% endif %}\
+{% if previous and previous.commit_id and commit_id %}
+    [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ previous.commit_id }})...[{{ commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit_id }})
 {% endif %}\
 {% set breaking_commits = commits | filter(attribute="breaking", value=true) %}\
 {% if breaking_commits %}
-
     ### BREAKING CHANGES
     {% for commit in breaking_commits %}
-        * {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.breaking_description | upper_first }}
+        - {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }})){% if commit.breaking_description != commit.message %} → {{ commit.breaking_description | upper_first }}{% endif %}\
     {% endfor %}
 {% endif %}\
-{% for group, group_commits in commits | group_by(attribute="group") %}
+{% for group, group_commits in commits | group_by(attribute="group") %}\
+{% set non_breaking = group_commits | filter(attribute="breaking", value=false) %}\
+{% if non_breaking %}
     ### {{ group | upper_first }}
-    {% for commit in group_commits %}
-        - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
-          {{ commit.message | upper_first }} \
-          ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }}))
+    {% for commit in non_breaking %}
+        - {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }}))\
     {% endfor %}
-{% endfor %}\n
+{% endif %}\
+{% endfor %}
 """
 
 [remote.github]
