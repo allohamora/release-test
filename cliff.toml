@@ -10,15 +10,15 @@ body = """
 {% endif %}\
 {% if previous %}\
     {% if previous.commit_id and commit_id %}
-        [{{ previous.commit_id | truncate(length=7, end="") }}]({{ previous.commit_id }})...\
-            [{{ commit_id | truncate(length=7, end="") }}]({{ commit_id }})
+        [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ previous.commit_id }})...\
+            [{{ commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit_id }})
     {% endif %}\
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for commit in commits %}
         - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
-          {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}]({{ commit.id }}))\
+          {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }}))\
           {% if commit.footers %}\
             {% for footer in commit.footers %}\
               {% if footer.token == "BREAKING CHANGE" %} — **Migration:** {{ footer.value }}{% endif %}\
@@ -27,6 +27,10 @@ body = """
     {% endfor %}
 {% endfor %}\n
 """
+
+[remote.github]
+owner = "allohamora"
+repo = "release-test"
 
 [git]
 filter_unconventional = false
