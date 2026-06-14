@@ -51,6 +51,7 @@ commit_parsers = [
     { message = "^test", group = "<!-- 07 -->Testing" },
     { message = "^revert", group = "<!-- 08 -->Revert" },
     { body = ".*security", group = "<!-- 09 -->Security" },
+    { message = "^Merge pull request", skip = true },
     { message = "^chore\\(release\\): prepare for", skip = true },
     { message = "^chore\\(deps.*\\)", skip = true },
     { message = "^chore\\(pr\\)", skip = true },
