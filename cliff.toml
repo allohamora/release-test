@@ -14,22 +14,12 @@ body = """
 {% if previous and previous.commit_id and commit_id %}
     [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ previous.commit_id }})...[{{ commit_id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit_id }})
 {% endif %}\
-{% set breaking_commits = commits | filter(attribute="breaking", value=true) %}\
-{% if breaking_commits %}
-    ### BREAKING CHANGES
-    {% for commit in breaking_commits %}
-        - {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }})){% if commit.breaking_description != commit.message %} → {{ commit.breaking_description | upper_first }}{% endif %}\
-    {% endfor %}
-{% endif %}\
-{% for group, group_commits in commits | group_by(attribute="group") %}\
-{% set non_breaking = group_commits | filter(attribute="breaking", value=false) %}\
-{% if non_breaking %}
+{% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
-    {% for commit in non_breaking %}
+    {% for commit in commits %}
         - {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }}))\
     {% endfor %}
-{% endif %}\
-{% endfor %}
+{% endfor %}\n
 """
 
 [remote.github]
@@ -39,6 +29,7 @@ repo = "release-test"
 [git]
 filter_unconventional = false
 commit_parsers = [
+    { message = "^\\w+(\\([^)]*\\))?!:", group = "<!-- 00 -->Breaking Changes" },
     { message = "^feat", group = "<!-- 01 -->Features" },
     { message = "^fix", group = "<!-- 02 -->Bug Fixes" },
     { message = "^perf", group = "<!-- 03 -->Performance" },
