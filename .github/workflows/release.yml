@@ -65,6 +65,8 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
       - name: Create release pull request
+        env:
+          GH_TOKEN: ${{ github.token }} # required for gh api calls
         run: |
           git checkout -b release/${{ steps.version.outputs.version }}
           git add CHANGELOG.md
