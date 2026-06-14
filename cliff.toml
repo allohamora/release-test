@@ -29,8 +29,7 @@ body = """
     ### {{ group | upper_first }}
     {% for commit in group_commits %}
         - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
-          {{ commit.message | upper_first }}\
-          {% for link in commit.links %} ([{{ link.text }}]({{ link.href }})){% endfor %} \
+          {{ commit.message | upper_first }} \
           ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }}))
     {% endfor %}
 {% endfor %}\n
@@ -42,9 +41,6 @@ repo = "release-test"
 
 [git]
 filter_unconventional = false
-link_parsers = [
-  { pattern = "#(\\d+)", href = "https://github.com/allohamora/release-test/issues/$1", text = "#$1" },
-]
 commit_parsers = [
     { message = "^feat", group = "<!-- 01 -->Features" },
     { message = "^fix", group = "<!-- 02 -->Bug Fixes" },
