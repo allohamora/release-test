@@ -1,0 +1,138 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g. 1.2.3). Leave empty to auto-calculate.'
+        required: false
+        type: string
+  push:
+    branches: [master]
+
+jobs:
+  pull-request:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate version
+        if: inputs.version != ''
+        run: |
+          if ! echo "${{ inputs.version }}" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Error: version must be in X.Y.Z format (e.g. 1.2.3), got: ${{ inputs.version }}"
+            exit 1
+          fi
+
+      - name: Get version
+        id: version
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=$(npx git-cliff --bumped-version | sed 's/^v//')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate changelog
+        run: npx git-cliff --tag ${{ steps.version.outputs.version }} -o CHANGELOG.md
+
+      - name: Generate release body
+        id: release-body
+        run: |
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          npx git-cliff --tag ${{ steps.version.outputs.version }} --unreleased --strip header >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Configure git
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Create release pull request
+        run: |
+          git checkout -b release/${{ steps.version.outputs.version }}
+          git add CHANGELOG.md
+          git commit -m 'chore: release ${{ steps.version.outputs.version }}'
+          git push origin release/${{ steps.version.outputs.version }}
+          gh api /repos/${{ github.repository }}/pulls \
+            --method POST \
+            --field title='chore: release ${{ steps.version.outputs.version }}' \
+            --field body='${{ steps.release-body.outputs.body }}' \
+            --field head="release/${{ steps.version.outputs.version }}" \
+            --field base="master"
+
+
+  check:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      should-release: ${{ steps.merged-pr.outputs.should-release }}
+      version: ${{ steps.merged-pr.outputs.version }}
+    steps:
+      - name: Get merged pull request
+        id: merged-pr
+        run: |
+          VERSION=$(gh api /repos/${{ github.repository }}/commits/${{ github.sha }}/pulls \
+            --jq '.[] | select(.head.ref | test("^release/[0-9]+\\.[0-9]+\\.[0-9]+$")) | .head.ref | ltrimstr("release/")' | head -1)
+          if [ -n "$VERSION" ]; then
+            echo "should-release=true" >> $GITHUB_OUTPUT
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "should-release=false" >> $GITHUB_OUTPUT
+          fi
+
+  release:
+    needs: check
+    if: needs.check.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Create tag
+        run: |
+          git tag ${{ needs.check.outputs.version }}
+          git push origin ${{ needs.check.outputs.version }}
+
+      - name: Generate release notes
+        run: npx git-cliff --latest --strip header -o release-notes.md
+
+      - name: Create release
+        run: |
+          gh release create ${{ needs.check.outputs.version }} \
+            --title "${{ needs.check.outputs.version }}" \
+            --notes-file release-notes.md
