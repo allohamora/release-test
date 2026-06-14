@@ -2,6 +2,9 @@
 # https://git-cliff.org/docs/configuration
 
 [changelog]
+postprocessors = [
+  { pattern = '<!-- \d+ -->', replace = "" },
+]
 body = """
 {% if version %}\
     ## {{ version | trim_start_matches(pat="v") }} - {{ timestamp | date(format="%Y-%m-%d") }}
