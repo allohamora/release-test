@@ -20,7 +20,7 @@ body = """
 {% set breaking_commits = commits | filter(attribute="breaking", value=true) %}\
 {% if breaking_commits %}
 
-    ### ⚠️ Breaking Changes
+    ### BREAKING CHANGES
     {% for commit in breaking_commits %}
         * {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.breaking_description | upper_first }}
     {% endfor %}
@@ -46,19 +46,19 @@ link_parsers = [
   { pattern = "#(\\d+)", href = "https://github.com/allohamora/release-test/issues/$1", text = "#$1" },
 ]
 commit_parsers = [
-    { message = "^feat", group = "<!-- 01 -->🚀 Features" },
-    { message = "^fix", group = "<!-- 02 -->🐛 Bug Fixes" },
-    { message = "^perf", group = "<!-- 03 -->⚡ Performance" },
-    { message = "^refactor", group = "<!-- 04 -->🚜 Refactor" },
-    { message = "^doc", group = "<!-- 05 -->📚 Documentation" },
-    { message = "^style", group = "<!-- 06 -->🎨 Styling" },
-    { message = "^test", group = "<!-- 07 -->🧪 Testing" },
-    { message = "^revert", group = "<!-- 08 -->◀️ Revert" },
-    { body = ".*security", group = "<!-- 09 -->🛡️ Security" },
+    { message = "^feat", group = "<!-- 01 -->Features" },
+    { message = "^fix", group = "<!-- 02 -->Bug Fixes" },
+    { message = "^perf", group = "<!-- 03 -->Performance" },
+    { message = "^refactor", group = "<!-- 04 -->Refactor" },
+    { message = "^doc", group = "<!-- 05 -->Documentation" },
+    { message = "^style", group = "<!-- 06 -->Styling" },
+    { message = "^test", group = "<!-- 07 -->Testing" },
+    { message = "^revert", group = "<!-- 08 -->Revert" },
+    { body = ".*security", group = "<!-- 09 -->Security" },
     { message = "^chore\\(release\\): prepare for", skip = true },
     { message = "^chore\\(deps.*\\)", skip = true },
     { message = "^chore\\(pr\\)", skip = true },
     { message = "^chore\\(pull\\)", skip = true },
-    { message = "^chore|^ci", group = "<!-- 10 -->⚙️ Miscellaneous Tasks" },
-    { message = ".*", group = "<!-- 11 -->💼 Other" },
+    { message = "^chore|^ci", group = "<!-- 10 -->Miscellaneous Tasks" },
+    { message = ".*", group = "<!-- 11 -->Other" },
 ]
