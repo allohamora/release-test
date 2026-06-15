@@ -37,7 +37,7 @@ repo = "release-test"
 [git]
 filter_unconventional = false
 commit_parsers = [
-    { message = "^\\w+(\\([^)]*\\))?!:", group = "<!-- 00 -->Breaking Changes" },
+    { message = "^\\w+(\\([^)]*\\))?!:", group = "<!-- 00 -->BREAKING CHANGES" },
     { message = "^feat", group = "<!-- 01 -->Features" },
     { message = "^fix", group = "<!-- 02 -->Bug Fixes" },
     { message = "^perf", group = "<!-- 03 -->Performance" },
