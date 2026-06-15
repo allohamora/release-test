@@ -3,13 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/allohamora/release-test/compare/v1.0.0...v2.0.0) (2026-06-15)
+
+### ⚠ BREAKING CHANGES
+- Fix incorrect breaking change handling ([aae0c28](https://github.com/allohamora/release-test/commit/aae0c28e0759f8fe0271d6846ab43fa581c349b1)) → a lot of text a lot of text a lot of text a lot text a lot of text a lot of text
+
 ## [1.0.0](https://github.com/allohamora/release-test/compare/v0.1.4...v1.0.0) (2026-06-15)
 
 ### ⚠ BREAKING CHANGES
+- Add breaking change parsing ([9f919fb](https://github.com/allohamora/release-test/commit/9f919fbd984002efd94119a6465ea182c2d05a48)) → we parse breaking change now
 - Add mutlibranch support ([f9ab8c8](https://github.com/allohamora/release-test/commit/f9ab8c83e5046e5c10e8b07d0f81b29e5d470ff3))
 
 ### Continuous Integration
-- Add breaking change parsing ([9f919fb](https://github.com/allohamora/release-test/commit/9f919fbd984002efd94119a6465ea182c2d05a48))
 - Add tag already exist check ([2dcb817](https://github.com/allohamora/release-test/commit/2dcb817ee3258f6fe9158949e2a6711c5fe4f02c))
 
 ## [0.1.4](https://github.com/allohamora/release-test/compare/v0.1.3...v0.1.4) (2026-06-15)
@@ -45,7 +50,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - Add 5 ! ([4cee446](https://github.com/allohamora/release-test/commit/4cee446a7805738c747c2c2a5ea0e9b6877cd92d))
 - Add 6! ([ab4df7b](https://github.com/allohamora/release-test/commit/ab4df7bee941e90fab0ea91b391984ab9e928f9f))
 - Add third ! to hello world ([9675895](https://github.com/allohamora/release-test/commit/9675895c606cedb1c384c22bf3599c168d25ce00))
-- **api:** Add 4 ! to hello world comment ([9219291](https://github.com/allohamora/release-test/commit/921929140f58c89bc3126340942e0a04c79055f3))
+- **api:** Add 4 ! to hello world comment ([9219291](https://github.com/allohamora/release-test/commit/921929140f58c89bc3126340942e0a04c79055f3)) → now we have 4 ! in the comment
 
 ### Features
 - **api:** Add extra! ([cbb2c4f](https://github.com/allohamora/release-test/commit/cbb2c4fba23bca6741796e91f1505722ec402f84))
