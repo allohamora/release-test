@@ -54,16 +54,20 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
       - name: Generate release notes
+        id: release_notes
         env:
           GITHUB_RELEASE: 'true'
-        run: npx --no-install git-cliff --unreleased --strip all -o release-notes.md
+        run: |
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          npx --no-install git-cliff --unreleased --strip all >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Bump version in package.json
         run: npm version ${{ steps.version.outputs.version }} --no-git-tag-version --workspaces --include-workspace-root
 
       - name: Commit and tag
         run: |
-          git add CHANGELOG.md '**/package.json' package-lock.json
+          git add .
           git commit -m 'chore: release v${{ steps.version.outputs.version }}'
           git tag v${{ steps.version.outputs.version }}
           git push origin master
@@ -75,4 +79,4 @@ jobs:
         run: |
           gh release create v${{ steps.version.outputs.version }} \
             --title "${{ steps.version.outputs.version }}" \
-            --notes-file release-notes.md
+            --notes "${{ steps.release_notes.outputs.notes }}"
