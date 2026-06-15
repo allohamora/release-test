@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.0](https://github.com/allohamora/release-test/compare/v0.1.4...v1.0.0) (2026-06-15)
+
+### ⚠ BREAKING CHANGES
+- Add mutlibranch support ([f9ab8c8](https://github.com/allohamora/release-test/commit/f9ab8c83e5046e5c10e8b07d0f81b29e5d470ff3))
+
+### Continuous Integration
+- Add breaking change parsing ([9f919fb](https://github.com/allohamora/release-test/commit/9f919fbd984002efd94119a6465ea182c2d05a48))
+- Add tag already exist check ([2dcb817](https://github.com/allohamora/release-test/commit/2dcb817ee3258f6fe9158949e2a6711c5fe4f02c))
+
 ## [0.1.4](https://github.com/allohamora/release-test/compare/v0.1.3...v0.1.4) (2026-06-15)
 
 ### Continuous Integration
