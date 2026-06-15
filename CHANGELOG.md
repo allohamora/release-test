@@ -3,9 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/allohamora/release-test/compare/v0.1.0...v0.1.1) (2026-06-15)
+
+### Continuous Integration
+- Update breaking changes label to include warning emoji ([c08c662](https://github.com/allohamora/release-test/commit/c08c662db27d374bb86c823bb3424d59dcf7cbd6))
 ## 0.1.0 (2026-06-15)
 
-### BREAKING CHANGES
+### ⚠ BREAKING CHANGES
 - Add 4 ! ([8cacb65](https://github.com/allohamora/release-test/commit/8cacb6583efca5936ef54d761f4ee8d506c27ed5))
 - Add 5 ! ([4cee446](https://github.com/allohamora/release-test/commit/4cee446a7805738c747c2c2a5ea0e9b6877cd92d))
 - Add 6! ([ab4df7b](https://github.com/allohamora/release-test/commit/ab4df7bee941e90fab0ea91b391984ab9e928f9f))
