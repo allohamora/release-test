@@ -61,7 +61,7 @@ jobs:
           git add .
           git commit -m 'chore: release v${{ steps.version.outputs.version }}'
           git tag v${{ steps.version.outputs.version }}
-          git push origin master
+          git push origin HEAD:${{ github.ref_name }}
           git push origin v${{ steps.version.outputs.version }}
 
       - name: Generate release notes
