@@ -42,11 +42,11 @@ jobs:
           if [ -n "${{ inputs.version }}" ]; then
             echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
           else
-            echo "version=$(npx git-cliff --bumped-version | sed 's/^v//')" >> $GITHUB_OUTPUT
+            echo "version=$(npx --no-install git-cliff --bumped-version | sed 's/^v//')" >> $GITHUB_OUTPUT
           fi
 
       - name: Generate changelog
-        run: npx git-cliff --tag v${{ steps.version.outputs.version }} -o CHANGELOG.md
+        run: npx --no-install git-cliff --tag v${{ steps.version.outputs.version }} -o CHANGELOG.md
 
       - name: Configure git
         run: |
@@ -56,7 +56,7 @@ jobs:
       - name: Generate release notes
         env:
           GITHUB_RELEASE: 'true'
-        run: npx git-cliff --unreleased --strip all -o release-notes.md
+        run: npx --no-install git-cliff --unreleased --strip all -o release-notes.md
 
       - name: Commit and tag
         run: |
