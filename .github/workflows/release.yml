@@ -53,6 +53,11 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
+      - name: Generate release notes
+        env:
+          GITHUB_RELEASE: 'true'
+        run: npx git-cliff --unreleased --strip all -o release-notes.md
+
       - name: Commit and tag
         run: |
           git add CHANGELOG.md
@@ -60,9 +65,6 @@ jobs:
           git tag v${{ steps.version.outputs.version }}
           git push origin master
           git push origin v${{ steps.version.outputs.version }}
-
-      - name: Generate release notes
-        run: npx git-cliff --latest --strip header -o release-notes.md
 
       - name: Create release
         env:
