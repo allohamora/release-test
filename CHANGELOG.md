@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/allohamora/release-test/compare/v0.1.3...v0.1.4) (2026-06-15)
+
+### Continuous Integration
+- Fix wrong revert commit rendering ([a90588c](https://github.com/allohamora/release-test/commit/a90588c81a10524787d63119a66d663320d8cc42))
+- Fix spaces issue in changelog ([c72ae39](https://github.com/allohamora/release-test/commit/c72ae3931506d29165e37ff59e9dcaa0c3069059))
+
 ## [0.1.3](https://github.com/allohamora/release-test/compare/v0.1.2...v0.1.3) (2026-06-15)
 
 ### Continuous Integration
@@ -10,18 +16,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - Replace remote github with repo url ([ad174c3](https://github.com/allohamora/release-test/commit/ad174c328b6d15f2b5ae3c36d94342419c9f4060))
 
 ### Other
-- Revert "ci: add release[bot] name"
+- Revert "ci: add release[bot] name" ([8df7c97](https://github.com/allohamora/release-test/commit/8df7c977937539fac0a0bae3fcc3e97afb48d194))
 
-This reverts commit 4eaeaa8f069ed2ef66cfcd8b2938ae8fd865b7ca. ([8df7c97](https://github.com/allohamora/release-test/commit/8df7c977937539fac0a0bae3fcc3e97afb48d194))
 ## [0.1.2](https://github.com/allohamora/release-test/compare/v0.1.1...v0.1.2) (2026-06-15)
 
 ### Continuous Integration
 - Update release notes generation to remove title header ([7ff992a](https://github.com/allohamora/release-test/commit/7ff992ae95d89f74eaa11aaab5eed3041f416ea1))
 - Add release[bot] name ([4eaeaa8](https://github.com/allohamora/release-test/commit/4eaeaa8f069ed2ef66cfcd8b2938ae8fd865b7ca))
+
 ## [0.1.1](https://github.com/allohamora/release-test/compare/v0.1.0...v0.1.1) (2026-06-15)
 
 ### Continuous Integration
 - Update breaking changes label to include warning emoji ([c08c662](https://github.com/allohamora/release-test/commit/c08c662db27d374bb86c823bb3424d59dcf7cbd6))
+
 ## 0.1.0 (2026-06-15)
 
 ### ⚠ BREAKING CHANGES
@@ -77,6 +84,4 @@ This reverts commit 4eaeaa8f069ed2ef66cfcd8b2938ae8fd865b7ca. ([8df7c97](https:/
 
 ### Other
 - Initial commit ([4c57469](https://github.com/allohamora/release-test/commit/4c5746918c2e14f137597bd0241cb45b8f4ac4eb))
-- Revert "ci: remove GH_TOKEN environment variable from release creation step"
-
-This reverts commit 37b430aff1894caf1bccac2d00526bb05645e158. ([55ca69c](https://github.com/allohamora/release-test/commit/55ca69c64fb0cfacc836c5bc3809540e6deef65b))
+- Revert "ci: remove GH_TOKEN environment variable from release creation step" ([55ca69c](https://github.com/allohamora/release-test/commit/55ca69c64fb0cfacc836c5bc3809540e6deef65b))
