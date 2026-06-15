@@ -7,7 +7,6 @@ header = """
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 """
 postprocessors = [
     { pattern = '<!-- \d+ -->', replace = "" },
@@ -17,12 +16,12 @@ body = """\
 {% if get_env(name="REMOVE_TITLE", default="") == "" %}\
 {% if version %}\
 {% if previous.version %}\
-## [{{ version | trim_start_matches(pat="v") }}]({{ repo_url }}/compare/{{ previous.version }}...{{ version }}) ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
+\n## [{{ version | trim_start_matches(pat="v") }}]({{ repo_url }}/compare/{{ previous.version }}...{{ version }}) ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
 {% else %}\
-## {{ version | trim_start_matches(pat="v") }} ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
+\n## {{ version | trim_start_matches(pat="v") }} ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
 {% endif %}\
 {% else %}\
-## [Unreleased]\n\n\
+\n## [Unreleased]\n\n\
 {% endif %}\
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}\
