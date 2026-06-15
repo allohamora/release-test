@@ -35,6 +35,10 @@ jobs:
             echo "Error: version must be in X.Y.Z format (e.g. 1.2.3), got: ${{ inputs.version }}"
             exit 1
           fi
+          if git tag -l "v${{ inputs.version }}" | grep -q .; then
+            echo "Error: tag v${{ inputs.version }} already exists"
+            exit 1
+          fi
 
       - name: Get version
         id: version
