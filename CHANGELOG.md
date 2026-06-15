@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/allohamora/release-test/compare/v0.1.1...v0.1.2) (2026-06-15)
+
+### Continuous Integration
+- Update release notes generation to remove title header ([7ff992a](https://github.com/allohamora/release-test/commit/7ff992ae95d89f74eaa11aaab5eed3041f416ea1))
+- Add release[bot] name ([4eaeaa8](https://github.com/allohamora/release-test/commit/4eaeaa8f069ed2ef66cfcd8b2938ae8fd865b7ca))
 ## [0.1.1](https://github.com/allohamora/release-test/compare/v0.1.0...v0.1.1) (2026-06-15)
 
 ### Continuous Integration
