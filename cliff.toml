@@ -13,10 +13,11 @@ postprocessors = [
     { pattern = '<!-- \d+ -->', replace = "" },
 ]
 body = """\
+{% set repo_url = "https://github.com/allohamora/release-test" %}\
 {% if get_env(name="REMOVE_TITLE", default="") == "" %}\
 {% if version %}\
 {% if previous.version %}\
-## [{{ version | trim_start_matches(pat="v") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/compare/{{ previous.version }}...{{ version }}) ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
+## [{{ version | trim_start_matches(pat="v") }}]({{ repo_url }}/compare/{{ previous.version }}...{{ version }}) ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
 {% else %}\
 ## {{ version | trim_start_matches(pat="v") }} ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
 {% endif %}\
@@ -30,14 +31,10 @@ body = """\
 {% endif %}\
 ### {{ group | upper_first }}\n\
 {% for commit in commits %}\
-- {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }}))\n\
+- {% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}]({{ repo_url }}/commit/{{ commit.id }}))\n\
 {% endfor %}\
 {% endfor %}
 """
-
-[remote.github]
-owner = "allohamora"
-repo = "release-test"
 
 [git]
 filter_unconventional = false
