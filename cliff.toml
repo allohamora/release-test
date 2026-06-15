@@ -13,7 +13,7 @@ postprocessors = [
     { pattern = '<!-- \d+ -->', replace = "" },
 ]
 body = """\
-{% if get_env(name="GITHUB_RELEASE", default="") == "" %}\
+{% if get_env(name="REMOVE_TITLE", default="") == "" %}\
 {% if version %}\
 {% if previous.version %}\
 ## [{{ version | trim_start_matches(pat="v") }}](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/compare/{{ previous.version }}...{{ version }}) ({{ timestamp | date(format="%Y-%m-%d") }})\n\n\
