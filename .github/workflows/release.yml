@@ -58,9 +58,12 @@ jobs:
           GITHUB_RELEASE: 'true'
         run: npx --no-install git-cliff --unreleased --strip all -o release-notes.md
 
+      - name: Bump version in package.json
+        run: npm version ${{ steps.version.outputs.version }} --no-git-tag-version --workspaces --include-workspace-root
+
       - name: Commit and tag
         run: |
-          git add CHANGELOG.md
+          git add CHANGELOG.md '**/package.json' package-lock.json
           git commit -m 'chore: release v${{ steps.version.outputs.version }}'
           git tag v${{ steps.version.outputs.version }}
           git push origin master
