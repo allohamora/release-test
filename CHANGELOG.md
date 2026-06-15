@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/allohamora/release-test/compare/v0.1.2...v0.1.3) (2026-06-15)
+
+### Continuous Integration
+- Remove missing space between releases ([7a485dc](https://github.com/allohamora/release-test/commit/7a485dc15c2f7c7e51d294703003b3e15a95a77a))
+- Replace remote github with repo url ([ad174c3](https://github.com/allohamora/release-test/commit/ad174c328b6d15f2b5ae3c36d94342419c9f4060))
+
+### Other
+- Revert "ci: add release[bot] name"
+
+This reverts commit 4eaeaa8f069ed2ef66cfcd8b2938ae8fd865b7ca. ([8df7c97](https://github.com/allohamora/release-test/commit/8df7c977937539fac0a0bae3fcc3e97afb48d194))
 ## [0.1.2](https://github.com/allohamora/release-test/compare/v0.1.1...v0.1.2) (2026-06-15)
 
 ### Continuous Integration
