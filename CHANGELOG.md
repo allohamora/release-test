@@ -3,15 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/allohamora/release-test/compare/v2.0.0...v2.0.1) (2026-06-16)
+
+### Continuous Integration
+- Remove chore(scope) skips ([d34756d](https://github.com/allohamora/release-test/commit/d34756d994ca40fec7254e0f447a1ca495680d27))
+- Remove security group ([7d34d3c](https://github.com/allohamora/release-test/commit/7d34d3c446d39b4eb05f413389345cf6bdf76faa))
+- Move commit link after migration guide ([5302fb7](https://github.com/allohamora/release-test/commit/5302fb7e7caab21292ab6f71cf11b200c4c946d2))
+
 ## [2.0.0](https://github.com/allohamora/release-test/compare/v1.0.0...v2.0.0) (2026-06-15)
 
 ### ⚠ BREAKING CHANGES
-- Fix incorrect breaking change handling ([aae0c28](https://github.com/allohamora/release-test/commit/aae0c28e0759f8fe0271d6846ab43fa581c349b1)) → a lot of text a lot of text a lot of text a lot text a lot of text a lot of text
+- Fix incorrect breaking change handling → a lot of text a lot of text a lot of text a lot text a lot of text a lot of text ([aae0c28](https://github.com/allohamora/release-test/commit/aae0c28e0759f8fe0271d6846ab43fa581c349b1))
 
 ## [1.0.0](https://github.com/allohamora/release-test/compare/v0.1.4...v1.0.0) (2026-06-15)
 
 ### ⚠ BREAKING CHANGES
-- Add breaking change parsing ([9f919fb](https://github.com/allohamora/release-test/commit/9f919fbd984002efd94119a6465ea182c2d05a48)) → we parse breaking change now
+- Add breaking change parsing → we parse breaking change now ([9f919fb](https://github.com/allohamora/release-test/commit/9f919fbd984002efd94119a6465ea182c2d05a48))
 - Add mutlibranch support ([f9ab8c8](https://github.com/allohamora/release-test/commit/f9ab8c83e5046e5c10e8b07d0f81b29e5d470ff3))
 
 ### Continuous Integration
@@ -50,7 +57,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - Add 5 ! ([4cee446](https://github.com/allohamora/release-test/commit/4cee446a7805738c747c2c2a5ea0e9b6877cd92d))
 - Add 6! ([ab4df7b](https://github.com/allohamora/release-test/commit/ab4df7bee941e90fab0ea91b391984ab9e928f9f))
 - Add third ! to hello world ([9675895](https://github.com/allohamora/release-test/commit/9675895c606cedb1c384c22bf3599c168d25ce00))
-- **api:** Add 4 ! to hello world comment ([9219291](https://github.com/allohamora/release-test/commit/921929140f58c89bc3126340942e0a04c79055f3)) → now we have 4 ! in the comment
+- **api:** Add 4 ! to hello world comment → now we have 4 ! in the comment ([9219291](https://github.com/allohamora/release-test/commit/921929140f58c89bc3126340942e0a04c79055f3))
 
 ### Features
 - **api:** Add extra! ([cbb2c4f](https://github.com/allohamora/release-test/commit/cbb2c4fba23bca6741796e91f1505722ec402f84))
