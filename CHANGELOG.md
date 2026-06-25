@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/allohamora/release-test/compare/v2.0.1...v2.0.2) (2026-06-25)
+
+### Documentation
+- Update README.md ([6e4e76d](https://github.com/allohamora/release-test/commit/6e4e76d199bf066adab539dd479bc1c420421007))
+- Update README.md again ([08e2ab5](https://github.com/allohamora/release-test/commit/08e2ab563e900044b158ddb84747ca2af21be1cf))
+
+### Chores
+- Add correct docs matching ([7afb28d](https://github.com/allohamora/release-test/commit/7afb28dbbd1a210a376c65f7e72182be41e9e715))
+
 ## [2.0.1](https://github.com/allohamora/release-test/compare/v2.0.0...v2.0.1) (2026-06-16)
 
 ### Continuous Integration
