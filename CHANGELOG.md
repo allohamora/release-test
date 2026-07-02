@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://github.com/allohamora/release-test/compare/v2.0.6...v2.0.7) (2026-07-02)
+
+### Bug Fixes
+
+- Add touch CHANGELOG.md to release ([0105a38](https://github.com/allohamora/release-test/commit/0105a38a0316ddb084ee718923f2c3a5b16d9f9e))
+
 ## [2.0.6](https://github.com/allohamora/release-test/compare/v2.0.5...v2.0.6) (2026-07-02)
 
 ### Documentation
