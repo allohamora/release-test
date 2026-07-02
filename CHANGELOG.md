@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/allohamora/release-test/compare/v2.0.3...v2.0.4) (2026-07-02)
+
+### Documentation
+
+- Add 123 to README.md ([660b0b5](https://github.com/allohamora/release-test/commit/660b0b5e15c7c178f50a9435250ea863460b05e0))
+
+### Other
+
+- Revert "docs: add 123 to README.md" ([3eea4b9](https://github.com/allohamora/release-test/commit/3eea4b95d7744fe87e35e39f298f64de1faa761d))
+
 ## [2.0.3](https://github.com/allohamora/release-test/compare/v2.0.2...v2.0.3) (2026-07-02)
 
 ### Continuous Integration
