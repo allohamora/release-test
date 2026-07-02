@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/allohamora/release-test/compare/v2.0.5...v2.0.6) (2026-07-02)
+
+### Documentation
+
+- Add 58910 to README.md ([26033c5](https://github.com/allohamora/release-test/commit/26033c5fbbf3119dcd26f83772e262338e8342be))
+
+### Continuous Integration
+
+- Restrict release to default branch ([35e5515](https://github.com/allohamora/release-test/commit/35e5515d184860121674db8249ca5498e6ab05a2))
+
 ## [2.0.5](https://github.com/allohamora/release-test/compare/v2.0.4...v2.0.5) (2026-07-02)
 
 ### Documentation
