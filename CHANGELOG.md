@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.8](https://github.com/allohamora/release-test/compare/v2.0.7...v2.0.8) (2026-07-07)
+
+### Continuous Integration
+
+- Add limit release notes size ([9bc6d8f](https://github.com/allohamora/release-test/commit/9bc6d8f45f042bd22b0e23982bb135dbce0df383))
+- Remove anchor in release note limit ([8b4de36](https://github.com/allohamora/release-test/commit/8b4de369223357b798a18a1d517b42b87ea3c4e3))
+
 ## [2.0.7](https://github.com/allohamora/release-test/compare/v2.0.6...v2.0.7) (2026-07-02)
 
 ### Bug Fixes
