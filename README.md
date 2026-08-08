@@ -1,2 +1,2 @@
 # release-test
-a release workflow test1 123
+a release workflow test1 1
