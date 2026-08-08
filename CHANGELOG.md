@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.9](https://github.com/allohamora/release-test/compare/v2.0.8...v2.0.9) (2026-08-08)
+
+### Build System
+
+- Add 1 to README.md ([7212039](https://github.com/allohamora/release-test/commit/7212039cdd0d55018b50ecb71481535b502c959a))
+
+### Continuous Integration
+
+- Add tabs to if block ([e0a8177](https://github.com/allohamora/release-test/commit/e0a8177d156743f30f411e3c9d5ae66323847b0f))
+
+### Miscellaneous Chores
+
+- Improve changelog ([d25c66f](https://github.com/allohamora/release-test/commit/d25c66f68c43620fb70f624fa36336fb7150729a))
+
 ## [2.0.8](https://github.com/allohamora/release-test/compare/v2.0.7...v2.0.8) (2026-07-07)
 
 ### Continuous Integration
